@@ -10,65 +10,56 @@ namespace Snake_And_Ladder
     {
         static void Main(string[] args)
         {
-
             Random random = new Random();
-
-            int StartPlayer = 0;
+            int[] playerPositions = { 0, 0 }; // Store positions for two players
+            int currentPlayer = 0; // 0 for Player 1, 1 for Player 2
             int count = 0;
+
             Console.WriteLine("Welcome to Snake and Ladder Game!");
 
-
-
-
-
-
-            while (StartPlayer < 100)
+            while (playerPositions[currentPlayer] < 100)
             {
-
-
-
-                int DiceRoll = random.Next(1, 7);
+                int diceRoll = random.Next(1, 7);
                 count++;
-                Console.WriteLine($"The DiceRoll value is {DiceRoll}");
+                Console.WriteLine($"Player {currentPlayer + 1}, the dice roll value is {diceRoll}");
 
+                int scenarioResult = random.Next(0, 3);
 
-
-                int ScenarioResult = random.Next(0, 3);
-
-                switch (ScenarioResult)
+                switch (scenarioResult)
                 {
                     case 0:
-                        Console.WriteLine($"No Play, You are at the position {StartPlayer}");
+                        Console.WriteLine($"No Play, Player {currentPlayer + 1} is at position {playerPositions[currentPlayer]}");
                         break;
                     case 1:
-                        int newposition = StartPlayer + DiceRoll;
-                        Console.WriteLine($"You are at the position {StartPlayer}");
-                        if (newposition > 100)
+                        int newPosition = playerPositions[currentPlayer] + diceRoll;
+                        Console.WriteLine($"Player {currentPlayer + 1} is at position {playerPositions[currentPlayer]}");
+                        if (newPosition > 100)
                         {
                             continue;
                         }
                         else
                         {
-                            StartPlayer = newposition;
+                            playerPositions[currentPlayer] = newPosition;
                         }
                         break;
                     case 2:
-                        Console.WriteLine($"You are at the position {StartPlayer}");
-                        if (StartPlayer < 0)
+                        Console.WriteLine($"Player {currentPlayer + 1} is at position {playerPositions[currentPlayer]}");
+                        if (playerPositions[currentPlayer] < 0)
                         {
-                            StartPlayer = 0;
+                            playerPositions[currentPlayer] = 0;
                         }
-                        StartPlayer -= DiceRoll;
+                        playerPositions[currentPlayer] -= diceRoll;
                         break;
-
                 }
 
-
-
+                Console.WriteLine($"Player 1 is at position {playerPositions[0]} and Player 2 is at position {playerPositions[1]}");
+                currentPlayer = 1 - currentPlayer; // Switch to the other player
             }
+
             Console.WriteLine($"{count} number of times the dice was rolled");
-            Console.WriteLine("Congratulations, you have reached the position 100!");
+            Console.WriteLine($"Player {currentPlayer + 1} wins! They have reached the position 100!");
             Console.ReadLine();
         }
     }
 }
+
