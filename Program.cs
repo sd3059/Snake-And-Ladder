@@ -31,7 +31,42 @@ namespace Snake_And_Ladder
                 count++;
                 Console.WriteLine($"The DiceRoll value is {DiceRoll}");
 
+
+
+                int ScenarioResult = random.Next(0, 3);
+
+                switch (ScenarioResult)
+                {
+                    case 0:
+                        Console.WriteLine($"No Play, You are at the position {StartPlayer}");
+                        break;
+                    case 1:
+                        int newposition = StartPlayer + DiceRoll;
+                        Console.WriteLine($"You are at the position {StartPlayer}");
+                        if (newposition > 100)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            StartPlayer = newposition;
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine($"You are at the position {StartPlayer}");
+                        if (StartPlayer < 0)
+                        {
+                            StartPlayer = 0;
+                        }
+                        StartPlayer -= DiceRoll;
+                        break;
+
+                }
+
+
+
             }
+        
         }
     }
 }
