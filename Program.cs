@@ -66,6 +66,7 @@ namespace Snake_And_Ladder
 
 
             }
+            Console.WriteLine($"{count} number of times the dice was rolled");
             Console.WriteLine("Congratulations, you have reached the position 100!");
             Console.ReadLine();
         }
