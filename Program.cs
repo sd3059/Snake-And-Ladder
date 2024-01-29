@@ -66,7 +66,8 @@ namespace Snake_And_Ladder
 
 
             }
-        
+            Console.WriteLine("Congratulations, you have reached the position 100!");
+
         }
     }
 }
