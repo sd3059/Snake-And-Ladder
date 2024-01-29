@@ -10,6 +10,8 @@ namespace Snake_And_Ladder
     {
         static void Main(string[] args)
         {
+            int StartPlayer = 0;
+            Console.WriteLine("Welcome to Snake and Ladder Game!");
         }
     }
 }
